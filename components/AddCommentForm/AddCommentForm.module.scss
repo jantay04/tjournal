@@ -16,6 +16,15 @@
   }
 }
 
-.addButton {
-  margin-top: 10px !important;
+
+
+.formButton{
+  position: relative;
+  margin-top: 10px;
+  height: 40px;
+  .addButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
 }

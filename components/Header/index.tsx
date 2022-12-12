@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { Paper, Button, IconButton, Avatar } from '@material-ui/core';
+import { Paper, Button, IconButton, Avatar, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, useTheme, useMediaQuery, Typography } from '@material-ui/core';
 import {
   SearchOutlined as SearchIcon,
   SmsOutlined as MessageIcon,
@@ -8,10 +8,22 @@ import {
   ExpandMoreOutlined as ArrowBottom,
   NotificationsNoneOutlined as NotificationIcon,
 } from '@material-ui/icons';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 
 import styles from './Header.module.scss';
+import { AuthDialog } from '../AuthDialog';
 
 export const Header: React.FC = () => {
+  const [authVisible, setAuthVisible] = React.useState(false);
+
+  const openAuthDialog = () => {
+    setAuthVisible(true);
+  };
+
+  const closeAuthDialog = () => {
+    setAuthVisible(false);
+  };
+
   return (
     <Paper classes={{ root: styles.root }} elevation={0}>
       <div className="d-flex align-center">
@@ -20,7 +32,7 @@ export const Header: React.FC = () => {
         </IconButton>
         <Link href="/">
           <a>
-            <img height={35} className="mr-20" src="/static/img/logo.svg" alt="Logo" />
+            <img  className="mr-20 h-[35px]" src="/static/img/logo.svg" alt="Logo" />
           </a>
         </Link>
 
@@ -54,7 +66,12 @@ export const Header: React.FC = () => {
             <ArrowBottom />
           </a>
         </Link>
+        <div  onClick={openAuthDialog} className='flex items-center text-[16px] hover:text-[#29b241] font-bold cursor-pointer' >
+          <AccountCircleOutlinedIcon className='mr-[10px]'/>
+          Войти
+        </div>
       </div>
+      <AuthDialog  onClose={closeAuthDialog} visible={authVisible}  />
     </Paper>
   );
 };

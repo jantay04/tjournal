@@ -4,8 +4,21 @@ import {Comment} from "../Comment";
 import {AddCommentForm} from "../AddCommentForm";
 import data from '../../data';
 
+type Commit = {
+    text: string;
+    id: number;
+    user: {
+        fullname: string;
+        avatarUrl: string;
+    }
+}
 
-export const PostComments: React.FC = () => {
+interface PostCommentsProps {
+    items: Commit[];
+
+}
+
+export const PostComments: React.FC<PostCommentsProps> = ({items}) => {
     const [activeTab, setActiveTab] = React.useState(0);
     const comments = data.comments[activeTab === 0 ? 'popular' : 'new'];
 
