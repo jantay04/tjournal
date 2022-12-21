@@ -23,7 +23,7 @@ function Login({ onOpenRegister }: Props) {
             <FormProvider {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
                     <FormField name="email" label="Почта" />
-                    <FormField name="password" label="Пароль" />
+                    <FormField name="password" label="Пароль" password />
                     <Divider className="mt-30 mb-20" />
                     <Button onClick={onOpenRegister} color="primary" >
                         Регистрация

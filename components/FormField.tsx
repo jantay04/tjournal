@@ -5,9 +5,10 @@ import { useFormContext } from 'react-hook-form'
 type Props = {
     name: string;
     label: string;
+    password? : boolean
 }
 
-function FormField({name, label}: Props) {
+function FormField({name, label, password}: Props) {
     const {register, formState} = useFormContext()
     return (
         <>
@@ -21,6 +22,7 @@ function FormField({name, label}: Props) {
                 error={!!formState.errors[name]?.message}
                 helperText={formState.errors[name]?.message}
                 fullWidth
+                type={password && 'password'}
             />
         </>
     )
