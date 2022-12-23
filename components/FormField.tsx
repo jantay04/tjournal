@@ -20,7 +20,7 @@ function FormField({name, label, password}: Props) {
                 label={label}
                 variant="outlined"
                 error={!!formState.errors[name]?.message}
-                helperText={formState.errors[name]?.message}
+                helperText={formState.errors[name] && formState.errors[name]?.message}
                 fullWidth
                 type={password && 'password'}
             />

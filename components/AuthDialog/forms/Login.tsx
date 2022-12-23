@@ -17,7 +17,6 @@ function Login({ onOpenRegister }: Props) {
     });
     const onSubmit = data => console.log(data);
 
-
     return (
         <div>
             <FormProvider {...form}>
